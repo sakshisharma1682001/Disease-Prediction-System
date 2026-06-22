@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Disease Prediction System</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#003b8e,#0d6efd,#4ea5ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:1200px;
+    min-height:700px;
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,0.25);
+    display:flex;
+}
+
+.left{
+    width:45%;
+    background:linear-gradient(180deg,#0d6efd,#0056d6);
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+.left img{
+    width:380px;
+    margin-top:40px;
+}
+
+.left h1{
+    font-size:42px;
+    margin-top:20px;
+}
+
+.left p{
+    font-size:20px;
+    margin-top:15px;
+}
+
+.right{
+    width:55%;
+    padding:50px;
+    background:#f8fbff;
+}
+
+.right h2{
+    text-align:center;
+    color:#0d6efd;
+    margin-bottom:30px;
+    font-size:35px;
+}
+
+label{
+    font-size:18px;
+    font-weight:600;
+    color:#333;
+    display:block;
+    margin-top:18px;
+    margin-bottom:8px;
+}
+
+select{
+    width:100%;
+    padding:15px;
+    border:2px solid #d0e3ff;
+    border-radius:10px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0056d6;
+}
+
+.result{
+    margin-top:25px;
+    padding:18px;
+    background:#e7f7ec;
+    border-left:6px solid green;
+    border-radius:10px;
+    font-size:22px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.info-card{
+    margin-top:25px;
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.08);
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    color:#777;
+}
+
+@media(max-width:900px){
+
+.container{
+    flex-direction:column;
+}
+
+.left,
+.right{
+    width:100%;
+}
+
+.left img{
+    width:250px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="left">
+
+<h1>🏥 Disease Prediction</h1>
+
+<p>
+AI Powered Healthcare System
+</p>
+
+<img src="https://cdn-icons-png.flaticon.com/512/387/387561.png">
+
+</div>
+
+<div class="right">
+
+<h2>🔬 Symptom Analysis</h2>
+
+<form method="POST">
+
+<label>🤒 Fever</label> <select name="fever" required>
+
+<option value="">Select</option>
+<option value="1">Yes</option>
+<option value="0">No</option>
+</select>
+
+<label>😷 Cough</label> <select name="cough" required>
+
+<option value="">Select</option>
+<option value="1">Yes</option>
+<option value="0">No</option>
+</select>
+
+<label>🤕 Headache</label> <select name="headache" required>
+
+<option value="">Select</option>
+<option value="1">Yes</option>
+<option value="0">No</option>
+</select>
+
+<label>😴 Fatigue</label> <select name="fatigue" required>
+
+<option value="">Select</option>
+<option value="1">Yes</option>
+<option value="0">No</option>
+</select>
+
+<button type="submit">
+🔍 Predict Disease
+</button>
+
+</form>
+
+{% if prediction %}
+
+<div class="result">
+    Predicted Disease: {{ prediction }}
+</div>
+{% endif %}
+
+<div class="info-card">
+    <h3>💡 Medical Notice</h3>
+    <p>
+        This system provides symptom-based predictions for educational purposes.
+        Please consult a healthcare professional for medical diagnosis.
+    </p>
+</div>
+
+<div class="footer">
+    © 2025 AI Disease Prediction System
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
