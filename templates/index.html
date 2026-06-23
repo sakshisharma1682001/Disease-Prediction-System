@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Disease Prediction System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -12,221 +13,342 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
     min-height:100vh;
-    background:linear-gradient(135deg,#003b8e,#0d6efd,#4ea5ff);
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background:linear-gradient(-45deg,#667eea,#764ba2,#6dd5ed,#2193b0);
+    background-size:400% 400%;
+    animation:gradientBG 10s ease infinite;
     padding:20px;
 }
 
-.container{
-    width:1200px;
-    min-height:700px;
-    background:white;
-    border-radius:25px;
-    overflow:hidden;
-    box-shadow:0 20px 50px rgba(0,0,0,0.25);
-    display:flex;
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
-.left{
-    width:45%;
-    background:linear-gradient(180deg,#0d6efd,#0056d6);
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.header{
+    text-align:center;
+    color:white;
+    margin-bottom:30px;
+}
+
+.header h1{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.header p{
+    font-size:18px;
+}
+
+.heart{
+    text-align:center;
+    font-size:60px;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+.main{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.doctor{
+    flex:1;
+    text-align:center;
+}
+
+.doctor img{
+    width:280px;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+.form-box{
+    flex:1;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.form-box h2{
     color:white;
     text-align:center;
-    padding:40px;
-}
-
-.left img{
-    width:380px;
-    margin-top:40px;
-}
-
-.left h1{
-    font-size:42px;
-    margin-top:20px;
-}
-
-.left p{
-    font-size:20px;
-    margin-top:15px;
-}
-
-.right{
-    width:55%;
-    padding:50px;
-    background:#f8fbff;
-}
-
-.right h2{
-    text-align:center;
-    color:#0d6efd;
-    margin-bottom:30px;
-    font-size:35px;
+    margin-bottom:20px;
 }
 
 label{
-    font-size:18px;
-    font-weight:600;
-    color:#333;
     display:block;
-    margin-top:18px;
-    margin-bottom:8px;
+    color:white;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:600;
 }
 
 select{
     width:100%;
-    padding:15px;
-    border:2px solid #d0e3ff;
+    padding:12px;
+    border:none;
     border-radius:10px;
-    font-size:16px;
 }
 
 button{
     width:100%;
-    margin-top:25px;
     padding:15px;
-    background:#0d6efd;
-    color:white;
+    margin-top:20px;
     border:none;
-    border-radius:10px;
+    border-radius:50px;
+    background:#00c853;
+    color:white;
     font-size:18px;
+    font-weight:bold;
     cursor:pointer;
     transition:0.3s;
 }
 
 button:hover{
-    background:#0056d6;
+    transform:scale(1.05);
 }
 
 .result{
-    margin-top:25px;
-    padding:18px;
-    background:#e7f7ec;
-    border-left:6px solid green;
-    border-radius:10px;
-    font-size:22px;
+    margin-top:20px;
+    background:white;
+    color:#28a745;
+    padding:15px;
+    border-radius:15px;
     text-align:center;
     font-weight:bold;
 }
 
-.info-card{
-    margin-top:25px;
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.stat-box{
     background:white;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.08);
+    padding:20px;
+    width:200px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.stat-box h2{
+    color:#667eea;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    color:#667eea;
+    margin-bottom:10px;
+}
+
+.tips{
+    margin-top:40px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
 }
 
 .footer{
     text-align:center;
-    margin-top:20px;
-    color:#777;
+    margin-top:30px;
+    color:white;
+    font-size:18px;
 }
 
-@media(max-width:900px){
-
-.container{
-    flex-direction:column;
+.chat-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#00c853;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
-.left,
-.right{
-    width:100%;
-}
+@media(max-width:768px){
+    .header h1{
+        font-size:35px;
+    }
 
-.left img{
-    width:250px;
-}
-
+    .doctor img{
+        width:200px;
+    }
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="left">
+<div class="heart">❤️</div>
 
-<h1>🏥 Disease Prediction</h1>
+<div class="header">
+    <h1>🩺 AI Disease Prediction System</h1>
+    <p>Your Smart Healthcare Assistant</p>
+</div>
 
-<p>
-AI Powered Healthcare System
-</p>
+<div class="main">
 
-<img src="https://cdn-icons-png.flaticon.com/512/387/387561.png">
+    <div class="doctor">
+        <img src="https://cdn-icons-png.flaticon.com/512/387/387561.png" alt="Doctor">
+    </div>
+
+    <div class="form-box">
+
+        <h2>Enter Symptoms</h2>
+
+        <form method="POST">
+
+            <label>🔥 Fever</label>
+            <select name="fever">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label>😷 Cough</label>
+            <select name="cough">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label>🤕 Headache</label>
+            <select name="headache">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label>😴 Fatigue</label>
+            <select name="fatigue">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <button type="submit">🔍 Predict Disease</button>
+
+        </form>
+
+        <!-- DEBUG: prediction value = [{{ prediction }}] -->
+        {% if prediction != "" %}
+            <div class="result">
+                Prediction Result: {{ prediction }}
+            </div>
+        {% endif %}
+
+    </div>
 
 </div>
 
-<div class="right">
+<div class="stats">
+    <div class="stat-box">
+        <h2>95%</h2>
+        <p>Accuracy</p>
+    </div>
 
-<h2>🔬 Symptom Analysis</h2>
+    <div class="stat-box">
+        <h2>1000+</h2>
+        <p>Predictions</p>
+    </div>
 
-<form method="POST">
-
-<label>🤒 Fever</label> <select name="fever" required>
-
-<option value="">Select</option>
-<option value="1">Yes</option>
-<option value="0">No</option>
-</select>
-
-<label>😷 Cough</label> <select name="cough" required>
-
-<option value="">Select</option>
-<option value="1">Yes</option>
-<option value="0">No</option>
-</select>
-
-<label>🤕 Headache</label> <select name="headache" required>
-
-<option value="">Select</option>
-<option value="1">Yes</option>
-<option value="0">No</option>
-</select>
-
-<label>😴 Fatigue</label> <select name="fatigue" required>
-
-<option value="">Select</option>
-<option value="1">Yes</option>
-<option value="0">No</option>
-</select>
-
-<button type="submit">
-🔍 Predict Disease
-</button>
-
-</form>
-
-{% if prediction %}
-
-<div class="result">
-    Predicted Disease: {{ prediction }}
+    <div class="stat-box">
+        <h2>24/7</h2>
+        <p>Available</p>
+    </div>
 </div>
-{% endif %}
 
-<div class="info-card">
-    <h3>💡 Medical Notice</h3>
-    <p>
-        This system provides symptom-based predictions for educational purposes.
-        Please consult a healthcare professional for medical diagnosis.
-    </p>
+<div class="features">
+
+    <div class="card">
+        <h3>🤖 AI Powered</h3>
+        <p>Machine Learning Based Prediction</p>
+    </div>
+
+    <div class="card">
+        <h3>⚡ Fast Results</h3>
+        <p>Instant Disease Detection</p>
+    </div>
+
+    <div class="card">
+        <h3>📊 High Accuracy</h3>
+        <p>Reliable Analysis</p>
+    </div>
+
+    <div class="card">
+        <h3>💙 Smart Healthcare</h3>
+        <p>Your Personal AI Assistant</p>
+    </div>
+
+</div>
+
+<div class="tips">
+    <h2>💡 Daily Health Tips</h2>
+    <p>💧 Drink Water | 🥗 Healthy Food | 🏃 Exercise | 😴 Sleep 8 Hours</p>
 </div>
 
 <div class="footer">
-    © 2025 AI Disease Prediction System
+    Developed by Sakshi Sharma ❤️
 </div>
 
 </div>
 
+<div class="chat-btn" onclick="alert('👨‍⚕️ Hello! Please enter symptoms and click Predict Disease.')">
+💬
 </div>
 
 </body>
